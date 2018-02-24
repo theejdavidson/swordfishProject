@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Controls : MonoBehaviour
 {
-    public float playerSpeed;
+    public float playerSpeed = 7;
+    public float RotateSpeed = 200;
     private Rigidbody rb;
     private Vector3 playerInput;
     private Vector3 playerVelocity;
@@ -23,11 +24,19 @@ public class Controls : MonoBehaviour
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition); //makes character face mouse
         Plane ground = new Plane(Vector3.up, Vector3.zero);
         float rayLength;
-        if (ground.Raycast(ray, out rayLength))
+       // if (ground.Raycast(ray, out rayLength))
+        //{
+         //   Vector3 pointToLook = ray.GetPoint(rayLength);
+          //  transform.LookAt(new Vector3(pointToLook.x, pointToLook.y, pointToLook.z));
+       // }//gets character to follow mouse
+        if (Input.GetMouseButton(0))//tracks left click mouse button
         {
-            Vector3 pointToLook = ray.GetPoint(rayLength);
-            transform.LookAt(new Vector3(pointToLook.x, pointToLook.y, pointToLook.z));
-        }//gets character to follow mouse
+            transform.Rotate(-Vector3.up * RotateSpeed * Time.deltaTime);
+        }
+        else if(Input.GetMouseButton(1))
+        {
+            transform.Rotate(Vector3.up * RotateSpeed * Time.deltaTime);
+        }
     }
     private void FixedUpdate()
     {
