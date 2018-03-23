@@ -1,13 +1,14 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Health : MonoBehaviour {
+public class Health : MonoBehaviour
+{
 
     public const int maxHP = 100;
     public int currentHP = maxHP;
-	// Use this for initialization
-	public void TakeDam(int amount)
+    // Use this for initialization
+    public void TakeDam(int amount)
     {
         currentHP -= amount;
         if (currentHP <= 0)
@@ -16,9 +17,10 @@ public class Health : MonoBehaviour {
             Debug.Log("TRY AGAIN.");
         }
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 }
