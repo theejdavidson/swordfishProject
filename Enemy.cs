@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
     private float fireRate = .5f;
     private float fireTime = 0.0f;
     private float timer = 0f;
-    private float spawn = 4f;
+    private float spawn = 2f;
     public int max = 0;
 
 
@@ -43,7 +43,7 @@ public class Enemy : MonoBehaviour
 
         }
          timer += Time.deltaTime;
-         if (timer >= spawn && max <2)
+         if (timer >= spawn && max <4)
          {
 
              SpawnEnemy();
