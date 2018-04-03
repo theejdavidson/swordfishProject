@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : Controls
 {
 
     private float speed = .13f;
@@ -11,9 +11,8 @@ public class Enemy : MonoBehaviour
     public GameObject enemy;
     private float fireRate = .5f;
     private float fireTime = 0.0f;
-    private float timer = 0f;
-    private float spawn = 2f;
-    public int max = 0;
+    
+ 
 
 
     void Start()
@@ -42,13 +41,7 @@ public class Enemy : MonoBehaviour
             Shoot();
 
         }
-         timer += Time.deltaTime;
-         if (timer >= spawn && max <4)
-         {
-
-             SpawnEnemy();
-             timer = 0f;
-         }
+        
         
     }
 
@@ -63,17 +56,16 @@ public class Enemy : MonoBehaviour
         }
     }
 
-     void SpawnEnemy()
-     {
-         var enemyClone = (GameObject)Instantiate(enemy, player.transform.position + Vector3.forward *20, transform.rotation);
-        max++;
-     }
+ 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Sword")
-        {
-            Destroy(gameObject);
-        }
+            if (collision.gameObject.tag == "Sword")
+            {
+            if(RotateSpeed > 500){
+                Destroy(gameObject);
+                }
+            }
+        
     }
 
 }
