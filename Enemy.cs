@@ -11,7 +11,9 @@ public class Enemy : Controls
     public GameObject enemy;
     private float fireRate = .5f;
     private float fireTime = 0.0f;
-    
+    public float enemyHP = 2000;
+    public float test;
+    public Transform enemyTransform;
  
 
 
@@ -32,6 +34,7 @@ public class Enemy : Controls
         }
         if ((Vector3.Distance(transform.position, player.transform.position) < 15))
         {
+            transform.LookAt(player.transform);
             transform.Translate(-speed, 0, -speed);
         }
 
@@ -41,7 +44,7 @@ public class Enemy : Controls
             Shoot();
 
         }
-        
+        test = getRSpeed();
         
     }
 
@@ -49,9 +52,10 @@ public class Enemy : Controls
     {
         if (Time.time > fireTime)
         {
+            
             fireTime = Time.time + fireRate;
             var shot = (GameObject)Instantiate(bullet, transform.position, transform.rotation);
-            shot.GetComponent<Rigidbody>().velocity = shot.transform.forward;
+            shot.GetComponent<Rigidbody>().velocity = shot.transform.forward * 20;
             Destroy(shot, 3);
         }
     }
@@ -59,13 +63,11 @@ public class Enemy : Controls
  
     private void OnCollisionEnter(Collision collision)
     {
-            if (collision.gameObject.tag == "Sword")
-            {
-            if(RotateSpeed > 500){
-                Destroy(gameObject);
-                }
-            }
-        
+        if ((collision.gameObject.tag == "Sword") && RotateSpeed > 5)
+        {
+            Destroy(gameObject);
+
+        }
     }
 
 }
