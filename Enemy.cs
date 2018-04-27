@@ -63,7 +63,7 @@ public class Enemy : Controls
  
     private void OnCollisionEnter(Collision collision)
     {
-        if ((collision.gameObject.tag == "Sword") && RotateSpeed > 5)
+        if ((collision.gameObject.tag == "Sword") && RotateSpeed > 500)
         {
             Destroy(gameObject);
 
