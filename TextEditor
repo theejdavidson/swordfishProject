@@ -1,0 +1,20 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class TextEditor : Spawner {
+    public Text waveText;
+
+    // Use this for initialization
+    void Start () {
+        waveText = GetComponent<Text>();
+        waveText.text = "Wave: 0" + "\r\n" + "Rotate Speed: 0";
+    }
+	
+	// Update is called once per frame
+	void Update () {
+       
+        waveText.text = "Wave: " + wave + "\r\n" + "Rotate Speed: " + RotateSpeed;
+   }
+}
