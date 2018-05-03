@@ -23,6 +23,7 @@ public class Dam : MonoBehaviour
         if (collision.gameObject.tag == "bullet")
         {
             hp -= 10;
+            setRSpeed(500);
         }
     }
 }
